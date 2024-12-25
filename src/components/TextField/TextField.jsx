@@ -10,7 +10,7 @@ const FieldStyled = styled.form`
     border: 2px solid white;
     border-radius: 8px;
     transition: border-color 0.3s;
-
+    
     &:focus-within {
         border-color: #867be6;
     }
@@ -23,7 +23,6 @@ const InputStyled = styled.input`
     background: transparent;
     font-size: 16px;
     width: 100%;
-
     &::placeholder {
         color: #ccc;
     }
