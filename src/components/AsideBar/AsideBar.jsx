@@ -5,6 +5,7 @@ import NavItem from '../NavItem/NavItem';
 const ListStyled = styled.li`
     list-style-type: none;
     margin-bottom: 10px;
+    cursor: pointer;
 `;
 
 const AsideStyled = styled.aside`
@@ -19,16 +20,12 @@ const AsideStyled = styled.aside`
 
 
 
-
-
-
 export default function AsideBar() {
     return (
         <AsideStyled>
             <nav>
                 <ul>
                     <ListStyled>
-                        
                         <NavItem href="#" icon={faHouse} active={true}>
                             Início
                         </NavItem>
