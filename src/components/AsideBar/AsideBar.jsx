@@ -1,62 +1,60 @@
 import { styled } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faEye, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faFaceSurprise, faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import { faHouse, faEye, faThumbsUp, faFaceSurprise, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import NavItem from '../NavItem/NavItem';
 
 const ListStyled = styled.li`
     list-style-type: none;
-    padding: 0;
-    margin: 0;
-`
+    margin-bottom: 10px;
+`;
 
-const LinkElm = styled.a`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    border-radius: 5px;
-    color: #d2d2d2;
-    font-size: 24px;
-`
+const AsideStyled = styled.aside`
+    width: 250px;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 10px;
+    }
+`;
+
+
+
+
+
 
 export default function AsideBar() {
     return (
-        <aside>
+        <AsideStyled>
             <nav>
                 <ul>
                     <ListStyled>
-                        <LinkElm href="">
-                            <FontAwesomeIcon icon={faHouse} style={{fontSize:'20px' ,color: '#f2f2f2', borderRadius: '8px' ,backgroundColor: '#857AE6', padding:'6px', width:'26px', height:'26px'  }} />
-                            <p>Início</p>
-                        </LinkElm>
+                        
+                        <NavItem href="#" icon={faHouse} active={true}>
+                            Início
+                        </NavItem>
                     </ListStyled>
                     <ListStyled>
-                        <LinkElm href="">
-                            <FontAwesomeIcon icon={faEye} style={{fontSize:'20px' ,color: '#f2f2f2', borderRadius: '8px' ,backgroundColor: '#04244f', padding:'6px', width:'26px', height:'26px'  }} />
-                            <p>Mais Vistas</p>
-                        </LinkElm>
+                        <NavItem href="#" icon={faEye} active={false}>
+                            Mais Vistas
+                        </NavItem>
                     </ListStyled>
                     <ListStyled>
-                        <LinkElm href="">
-                            <FontAwesomeIcon icon={faThumbsUp} style={{fontSize:'20px', color: '#f2f2f2', borderRadius: '8px' ,backgroundColor: '#04244f', padding:'6px', width:'26px', height:'26px'  }} />
-                            <p>Mais Curtidas</p>
-                        </LinkElm>
+                        <NavItem href="#" icon={faThumbsUp} active={false}>
+                            Mais Curtidas
+                        </NavItem>
                     </ListStyled>
                     <ListStyled>
-                        <LinkElm href="">
-                            <FontAwesomeIcon icon={faLightbulb} style={{fontSize:'20px', color: '#f2f2f2', borderRadius: '8px' ,backgroundColor: '#04244f', padding:'6px', width:'26px', height:'26px' }} />
-                            <p>Novidades</p>
-                        </LinkElm>
+                        <NavItem href="#" icon={faLightbulb} active={false}>
+                            Novidades
+                        </NavItem>
                     </ListStyled>
                     <ListStyled>
-                        <LinkElm href="">
-                            <FontAwesomeIcon icon={faFaceSurprise} style={{fontSize:'20px', color: '#f2f2f2', borderRadius: '8px' ,backgroundColor: '#13325c', padding:'6px', width:'26px', height:'26px' }} />
-                            <p>Surpreenda-me</p>
-                        </LinkElm>
+                        <NavItem href="#" icon={faFaceSurprise} active={false}>
+                            Surpreenda-me
+                        </NavItem>
                     </ListStyled>
                 </ul>
             </nav>
-
-        </aside>
-    )
+        </AsideStyled>
+    );
 }
