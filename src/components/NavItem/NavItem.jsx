@@ -7,7 +7,7 @@ const Icon = styled(FontAwesomeIcon)`
     padding: 6px;
     border-radius: 8px;
     width: 25px;
-    height: 25px;
+    height: 28px;
     background-color: ${({ $active }) => ($active ? '#857AE6' : '#04244f')};
     color: ${({ $active }) => ($active ? '#f2f2f2' : '#94a3b8')};
 `;
@@ -19,10 +19,12 @@ const Item = styled.a`
     text-decoration: none;
     border-radius: 5px;
     color: ${({ $active }) => ($active ? '#857AE6' : '#d2d2d2')};
-    font-size: 18px;
-
+    font-family: ${({$active}) => ($active ? 'HiBlack' : 'HiRegular')};
+    font-size: 16px;
+    line-height: 29px;
     &:hover {
         color: #ffffff;
+        font-family: HiBlack;
     }
 `;
 

@@ -28,12 +28,14 @@ const TextStyled = styled.p`
     font-size: 24px;
 `;
 
+
+
 const Header = () => {
     return (
         <HeaderStyled>
             <LogoStyled>
                 <FontAwesomeIcon icon={faMoon} style={{ color: '#867be6', fontSize: '24px' }} />
-                <TextStyled>Space View</TextStyled>
+                <TextStyled>Space<b>View</b></TextStyled>
             </LogoStyled>
             <TextField />
         </HeaderStyled>

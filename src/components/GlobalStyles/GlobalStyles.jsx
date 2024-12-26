@@ -1,7 +1,19 @@
 import { createGlobalStyle } from 'styled-components'
-
+import HiRegular from './fonts/HiRegular.otf'
+import HiBlack from './fonts/HiBlack.otf'
 
 const GlobalStyles = createGlobalStyle`
+
+@font-face {
+  font-family: 'HiRegular';
+  src: local('Hi Regular'), local('HiRegular'),url(${HiRegular});
+}
+@font-face {
+  font-family: 'HiBlack';
+  src: local('Hi Black'), local('HiBlack'),url(${HiBlack});
+}
+
+
 html {
   line-height: 1.15; 
   -webkit-text-size-adjust: 100%; 
@@ -9,6 +21,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: HiRegular;
 }
 main {
   display: block;
