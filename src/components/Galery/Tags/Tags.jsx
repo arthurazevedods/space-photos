@@ -10,6 +10,13 @@ const TagContainer = styled.div`
     flex-wrap: wrap;
 `;
 
+const TagTitulo = styled.h3`
+    color: #D9D9D9;
+    font-size: 24px;
+`
+
+
+
 const ListTag = styled.ul`
     display: flex;
     gap: 24px;
@@ -19,18 +26,25 @@ const ListTag = styled.ul`
 `;
 
 const TagButton = styled.button`
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 12px;
+    box-sizing: border-box;
+    border: ${({ $selected }) => ($selected ? '2px solid #857AE6' : '2px solid transparent')};
+    &:hover {
+      border-color: #C98CF1;
+    }
     background-color: #d9d9d958;
-    border: ${({ $selected }) => ($selected ? '2px solid #857AE6' : 'none')};
     border-radius: 10px;
     color: #f2f2f2;
-    padding: 8px;
     transition: border 0.3s ease;
 `;
 
 export default function Tags() {
     return (
         <TagContainer>
-            <p>Busque por Tags:</p>
+            <TagTitulo>Busque por Tags:</TagTitulo>
             <ListTag>
                 {tags?.map(tag => (
                     <li key={tag.id}>
