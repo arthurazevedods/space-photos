@@ -1,11 +1,9 @@
-/* eslint react/prop-types: 0 */
 import styled from "styled-components";
 import Title from "../Title/Title";
 import Tags from "./Tags/Tags";
-import Populars from "./Populars";
+import Favorites from "./Favorites";
 import Image from "./Image";
-
-
+/* eslint-disable react/prop-types */
 const GaleryContainer = styled.div`
   display: flex;
   gap: 24px;
@@ -22,7 +20,7 @@ const ContainerImages = styled.section`
   gap: 24px;
 `;
 
-const Galery = ({ photos = [], onSelectPhoto, onFavorite, isFavorite }) => {
+const Galery = ({ photos, onSelectPhoto, onFavorite }) => {
   return (
     <>
       <Tags />
@@ -30,17 +28,17 @@ const Galery = ({ photos = [], onSelectPhoto, onFavorite, isFavorite }) => {
         <FluidSection>
           <Title>Navegue pela Galeria</Title>
           <ContainerImages>
-            {
-              photos.map((photo) => <Image
-                  onZoom={onSelectPhoto}
-                  onFavorite={onFavorite}
-                  isFavorite={isFavorite}
-                  key={photo.id}
-                  photo={photo} />)
-            }
+            {photos.map((photo) => (
+              <Image
+                key={photo.id}
+                photo={photo}
+                onZoom={onSelectPhoto}
+                onFavorite={onFavorite}
+              />
+            ))}
           </ContainerImages>
         </FluidSection>
-        <Populars />
+        <Favorites favorites={photos.filter((photo) => photo.favorita)} />
       </GaleryContainer>
     </>
   );

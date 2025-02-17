@@ -1,9 +1,8 @@
-/* eslint react/prop-types: 0 */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid, faUpRightAndDownLeftFromCenter } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
-
+/* eslint-disable react/prop-types */
 const Figure = styled.figure`
   width: ${(props) => (props.$expandida ? "90%" : "460px")};
   max-width: 100%;
@@ -22,18 +21,6 @@ const Figure = styled.figure`
     color: white;
     box-sizing: border-box;
     padding: 12px;
-
-    
-
-    h4 {
-      flex-grow: 1;
-    }
-
-    h3,
-    h4 {
-      margin: 0;
-      font-size: 16px;
-    }
   }
 `;
 
@@ -63,10 +50,8 @@ const CardButton = styled.button`
 `;
 
 const Image = ({ photo, expandida = false, onZoom, onFavorite }) => {
-
-  
   return (
-    <Figure $expandida={expandida} id={`photo-${photo.id}`}>
+    <Figure $expandida={expandida}>
       <img src={photo.path} alt={photo.alt} />
       <figcaption>
         <h3>{photo.titulo}</h3>
@@ -75,9 +60,11 @@ const Image = ({ photo, expandida = false, onZoom, onFavorite }) => {
           <CardButton aria-label="Curtir" onClick={() => onFavorite(photo)}>
             <Icon icon={photo.favorita ? faHeartSolid : faHeartRegular} />
           </CardButton>
-          {!expandida && <CardButton onClick={() => onZoom(photo)} aria-hidden={expandida} aria-label="Expandir">
-            <Icon icon={faUpRightAndDownLeftFromCenter} />
-          </CardButton>}
+          {!expandida && (
+            <CardButton onClick={() => onZoom(photo)} aria-label="Expandir">
+              <Icon icon={faUpRightAndDownLeftFromCenter} />
+            </CardButton>
+          )}
         </Footer>
       </figcaption>
     </Figure>

@@ -35,27 +35,19 @@ const Content = styled.section`
 export default function App() {
   const [photos, setPhotos] = useState(photosData);
   const [selectPhoto, setSelectPhoto] = useState(null);
-  const closeModal = (event) =>{
+
+  const closeModal = (event) => {
     event.preventDefault();
-    setSelectPhoto(null)
-  }
+    setSelectPhoto(null);
+  };
 
-  const onFavorite = (foto)=>{
-    if(foto.id === selectPhoto?.id) {
-      setSelectPhoto({
-        ...selectPhoto,
-        favorita: !selectPhoto.favorita
-      })
-    }
-    setPhotos(photos.map(photo => {
-      return {
-        ...photo,
-        favorita: photo.id === foto.id ? !photo.favorita : photo.favorita 
-      }
-    }))
-  }
-
-  
+  const onFavorite = (photo) => {
+    setPhotos((prevPhotos) =>
+      prevPhotos.map((p) =>
+        p.id === photo.id ? { ...p, favorita: !p.favorita } : p
+      )
+    );
+  };
 
   return (
     <FundoGradiente>
@@ -70,14 +62,14 @@ export default function App() {
               bgImage="./assets/images/banner.jpg"
             />
             <Galery
-              onSelectPhoto={(photo) => setSelectPhoto(photo)}
+              onSelectPhoto={setSelectPhoto}
               onFavorite={onFavorite}
               photos={photos}
             />
           </Content>
         </MainContainer>
       </AppContainer>
-      {selectPhoto && <ModalZoom photo={selectPhoto} onClose={closeModal} onFavorite={onFavorite}/>}
+      {selectPhoto && <ModalZoom photo={selectPhoto} onClose={closeModal} onFavorite={onFavorite} />}
     </FundoGradiente>
   );
 }
