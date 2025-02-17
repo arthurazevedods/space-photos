@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Title from "../Title/Title";
 import Tags from "./Tags/Tags";
@@ -21,14 +22,22 @@ const ContainerImages = styled.section`
 `;
 
 const Galery = ({ photos, onSelectPhoto, onFavorite }) => {
+  const [selectedTag, setSelectedTag] = useState(0);
+  
+  // Lista de favoritos (independente da filtragem)
+  const favorites = photos.filter(photo => photo.favorita);
+
+  // Lista de fotos filtradas (com base na tag selecionada)
+  const filteredPhotos = selectedTag === 0 ? photos : photos.filter(photo => photo.tagId === selectedTag);
+
   return (
     <>
-      <Tags />
+      <Tags onSelectTag={setSelectedTag} />
       <GaleryContainer>
         <FluidSection>
           <Title>Navegue pela Galeria</Title>
           <ContainerImages>
-            {photos.map((photo) => (
+            {filteredPhotos.map((photo) => (
               <Image
                 key={photo.id}
                 photo={photo}
@@ -38,7 +47,8 @@ const Galery = ({ photos, onSelectPhoto, onFavorite }) => {
             ))}
           </ContainerImages>
         </FluidSection>
-        <Favorites favorites={photos.filter((photo) => photo.favorita)} />
+        {/* Favoritos NÃO DEPENDEM DO FILTRO */}
+        <Favorites favorites={favorites} />
       </GaleryContainer>
     </>
   );
